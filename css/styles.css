@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto|Poppins&display=swap");
+
+/* Global Styles */
+body {
+  background: black;
+  font-family: 'Roboto', sans-serif;
+  overflow-anchor: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  width: 100%;
+  height: 100vh;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  scroll-snap-type: y proximity;
+  -ms-overflow-style: none;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.sections {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
+/* Typography */
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+}
+
+.main-text, .jobs {
+  color: white;
+  font-size: 4rem;
+  text-align: left;
+  margin-left: 15%;
+  margin-right: 5%;
+  animation: fadein 4s ease-in;
+}
+
+.jobs {
+  display: inline-block;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Sections */
+#home.sections {
+  background-color: #0d0d0d;
+}
+
+#skills, #about-me {
+  background-color: #0d0d0d;
+}
+
+#projects, #blog {
+  height: max-content;
+}
+
+#projects .jumbotron {
+  background-color: #fff;
+}
+
+#blog .jumbotron {
+  background-color: #0d0d0d;
+}
+
+#blog h1, #blog .lead, #blog p {
+  color: whitesmoke;
+}
+
+#blog hr {
+  background: whitesmoke;
+  height: 1px;
+  border: none;
+  opacity: 0.25;
+}
+
+/* Skills Section */
+#skills {
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 4rem;
+}
+
+#skills h2, .section__title--skills {
+  font-style: oblique;
+  padding-top: 12%;
+  position: relative;
+  color: white;
+}
+
+#skills h2::after, .section__title--skills::after {
+  content: '';
+  display: block;
+  width: 2em;
+  height: 1px;
+  margin: 0.5em auto;
+  background: whitesmoke;
+  opacity: 0.25;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  max-width: 1200px;
+  margin-top: 2em;
+}
+
+.skill {
+  min-width: 240px;
+  width: 30%;
+  padding: 1em;
+  margin: 1em;
+  background-color: transparent;
+  border: 1px solid var(--clr-accent-glow, #00eaff);
+  border-radius: 0.7rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0px 0px 20px 1px var(--clr-accent-glow, #00eaff);
+  opacity: 0;
+  transform: translateY(2em);
+  transition: all 0.7s ease-in-out;
+}
+
+.skill.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill:hover {
+  box-shadow: 0px 0px 20px 1px #00eaff;
+}
+
+.skill h3 {
+  margin-bottom: 3.5em;
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list__item {
+  color: rgb(0, 170, 255);
+  margin: 1em;
+}
+
+/* Projects / Cards */
+.card {
+  margin-right: 2em;
+}
+
+.carousel-inner h5, .carousel-inner p {
+  color: black;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #0d0d0d;
+  padding: 45px 0 20px;
+  font-size: 15px;
+  color: #737373;
+}
+
+.site-footer hr {
+  border-top-color: #bbb;
+  opacity: 0.5;
+}
+
+.site-footer h6 {
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 5px;
+}
+
+.site-footer a {
+  color: #737373;
+}
+
+.site-footer a:hover {
+  color: #3366cc;
+  text-decoration: none;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  display: block;
+}
+
+.footer-links a:hover {
+  color: #3366cc;
+}
+
+.site-footer .social-icons {
+  text-align: right;
+}
+
+.site-footer .social-icons a {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  border-radius: 100%;
+  background-color: #33353d;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  font-size: 16px;
+}
+
+.social-icons a:hover {
+  background-color: #00eaff;
+  color: #fff;
+}
+
+/* Social media color overrides */
+.social-icons a.codepen:hover { background-color: #ff3c77; }
+.social-icons a.github:hover { background-color: #2ea054; }
+.social-icons a.twitter:hover { background-color: #00aced; }
+.social-icons a.linkedin:hover { background-color: #007bb6; }
+.social-icons a.behance:hover { background-color: #3f52fc; }
+.social-icons a.codeforces:hover { background-color: #fd7e14; }
+
+@media (max-width: 767px) {
+  .main-text, .jobs {
+    font-size: 2rem;
+    margin-left: 10%;
+    margin-right: 5%;
+  }
+
+  .skills {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .skill {
+    width: 90%;
+    margin: 1em auto;
+  }
+
+  .site-footer .social-icons,
+  .site-footer .copyright-text {
+    text-align: center;
+  }
+}
