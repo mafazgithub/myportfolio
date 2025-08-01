@@ -12,10 +12,13 @@ let jobIndex = 0;
 let timer = setInterval(updateJobTitle, 1600);
 
 function updateJobTitle() {
-  mainTextElement.innerHTML = `Hi there! I'm <span class="jobs">${jobTitles[jobIndex]}</span>`;
-  jobIndex = (jobIndex + 1) % jobTitles.length;
+  if (mainTextElement) {
+    mainTextElement.innerHTML = `Hi there! I'm <span class="jobs">${jobTitles[jobIndex]}</span>`;
+    jobIndex = (jobIndex + 1) % jobTitles.length;
+  }
 }
 
+// Intersection Observer animation for skills
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
@@ -26,19 +29,30 @@ const observer = new IntersectionObserver((entries) => {
   });
 });
 
+// Observe skill elements
 document.querySelectorAll(".skill").forEach((element) => observer.observe(element));
 
+// Ensure skills show on DOM load
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.skill').forEach(skill => {
     skill.classList.add('show');
   });
 });
 
+// Menu toggle (safe check)
 const toggleMenu = () => {
   const menu = document.querySelector('.menu');
-  menu.classList.toggle('active');
+  if (menu) {
+    menu.classList.toggle('active');
+  }
 };
 
+const toggleMenuBtn = document.querySelector('.toggle-menu');
+if (toggleMenuBtn) {
+  toggleMenuBtn.addEventListener('click', toggleMenu);
+}
+
+// Scroll to top (safe check)
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
@@ -46,5 +60,7 @@ const scrollToTop = () => {
   });
 };
 
-document.querySelector('.toggle-menu').addEventListener('click', toggleMenu);
-document.querySelector('.scroll-top').addEventListener('click', scrollToTop);
+const scrollTopBtn = document.querySelector('.scroll-top');
+if (scrollTopBtn) {
+  scrollTopBtn.addEventListener('click', scrollToTop);
+}
